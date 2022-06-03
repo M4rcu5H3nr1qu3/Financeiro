@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+/home/agespisa/Área de Trabalho/Marcus-projetos/financeiro/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes

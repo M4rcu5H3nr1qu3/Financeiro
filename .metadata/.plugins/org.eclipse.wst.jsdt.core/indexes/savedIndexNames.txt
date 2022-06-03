@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/agespisa/Área de Trabalho/Marcus-projetos/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2852140148.index
+1711528213.index
+3723267961.index
+1255422467.index
+716264464.index
+714294346.index
+4283876295.index
