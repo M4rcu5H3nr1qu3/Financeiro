@@ -8,7 +8,7 @@ import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlInputText;
 
 
-@ManagedBean(name = "nomes")
+@ManagedBean
 @ViewScoped
 public class NomesBean {
 	
