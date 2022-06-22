@@ -1,7 +1,8 @@
 package financeiro;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,19 +11,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Persistence;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import anotation.DecimalPositivo;
 
 @Entity
-@Table(name = "lancamento")
+@Table(name = "lancamentos")
 public class Lancamento {
-	
-	
-	
-	
+
 	private Long id;
 	private Pessoa pessoa;
 	private String descricao;
@@ -30,12 +32,6 @@ public class Lancamento {
 	private TipoLancamento tipo;
 	private Date dataVencimento;
 	private Date dataPagamento;
-	
-	public static class CriaTabelas {
-	public static void main(String[] args) {
-		Persistence.createEntityManagerFactory("FinanceiroPU");
-		}
-	}
 
 	@Id
 	@GeneratedValue
@@ -43,64 +39,68 @@ public class Lancamento {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+	@NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "pessoa_id")
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-	
+	@NotEmpty
+	@Size(max = 80)
 	@Column(length = 80, nullable = false)
 	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
+	@DecimalPositivo
 	@Column(precision = 10, scale = 2, nullable = false)
 	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	public TipoLancamento getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoLancamento tipo) {
-		this.tipo = tipo;
-	}
-	
+	@NotNull
 	@Temporal(TemporalType.DATE)
-	private java.util.Date creationDate;
 	@Column(name = "data_vencimento", nullable = false)
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(Date dataVencimento) {
-		this.dataVencimento = dataVencimento;
-	}
-	
 	@Temporal(TemporalType.DATE)
-	private java.util.Date creatioDate;
 	@Column(name = "data_pagamento", nullable = true)
 	public Date getDataPagamento() {
 		return dataPagamento;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public void setTipo(TipoLancamento tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
 	}
 
 	public void setDataPagamento(Date dataPagamento) {
@@ -165,8 +165,4 @@ public class Lancamento {
 		return true;
 	}
 	
-	
 }
-
-	
-	

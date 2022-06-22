@@ -12,6 +12,7 @@
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -37,13 +38,20 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Driver JDBC do MySQL -->
+		<!-- Driver JDBC do PostgreSQL -->
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.26</version>
+		<!--<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>9.1-901.jbdc4</version>
 			<scope>compile</scope>
+		</dependency>-->
+		
+		<!-- Driver JDBC do PostgreSQL -->
+		<dependency>
+    		<groupId>postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>9.1-901.jdbc4</version>
 		</dependency>
 
 		<!-- Mojarra (implementacao do JSF) -->
@@ -54,9 +62,43 @@
 			<version>2.2.2</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<!-- postgreSQL -->
+		
+		<!--<dependency>
+  			 <groupId>org.postgresql</groupId>
+ 			 <artifactId>postgresql</artifactId>
+ 			 <version>4.2.6</version>
+ 			 <type>bundle</type>
+		</dependency>-->
+		
+		<!-- postgreSQL -->
+		
+		<dependency>
+   			 <groupId>io.vertx</groupId>
+			 <artifactId>vertx-pg-client</artifactId>
+			 <version>4.2.6</version>
+		</dependency>
+		
+		<!-- Implementacao do Bean Validation -->
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.1.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Weld (implementação do CDI) -->
+				
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.0.4.Final</version>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
-
 
 	<build>
 		<plugins>

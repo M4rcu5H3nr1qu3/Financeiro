@@ -4,12 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Persistence;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
+	
 	private Long id;
 	private String nome;
 	
@@ -22,7 +25,9 @@ public class Pessoa {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	@NotEmpty
+	@Size(max = 60)
+	@Column(length = 60, nullable = false)
 	public String getNome() {
 		return nome;
 	}
@@ -32,11 +37,6 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public static class CriaTabelas {
-		public static void main(String[] args) {
-			Persistence.createEntityManagerFactory("FinanceiroPU");
-		}
-	}
 
 	@Override
 	public int hashCode() {
